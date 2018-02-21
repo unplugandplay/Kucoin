@@ -4,7 +4,7 @@ module Kucoin
       module Currencies
         
         def exchange_rates(options: {})
-          parse(get("/open/currencies", options: options))&.dig("data", "rates")
+          get("/open/currencies", options: options)&.dig("data", "rates")
         end
       
       end

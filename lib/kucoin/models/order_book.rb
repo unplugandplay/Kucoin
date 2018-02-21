@@ -3,7 +3,7 @@ module Kucoin
     class OrderBook
       attr_accessor :symbol, :timestamp, :asks, :bids
       
-      ARRAY_MAPPING         =   {
+      INDEX_MAPPING         =   {
         0 => :price,
         1 => :amount,
         2 => :volume
@@ -36,7 +36,7 @@ module Kucoin
           data              =   {}
           
           item.each_with_index do |value, index|
-            data[ARRAY_MAPPING[index]] = value
+            data[INDEX_MAPPING[index]] = value
           end
           
           case type

@@ -25,6 +25,7 @@ module Kucoin
       include ::Kucoin::Rest::Private::Transfers
       include ::Kucoin::Rest::Private::Balances
       include ::Kucoin::Rest::Private::Trading
+      include ::Kucoin::Rest::Private::Markets
             
       def configured?
         !self.configuration.key.to_s.empty? && !self.configuration.secret.to_s.empty?
@@ -81,7 +82,7 @@ module Kucoin
           builder.adapter self.configuration.faraday.fetch(:adapter, :net_http)
         end
     
-        case method
+        response = case method
           when :get
             connection.get do |request|
               request.params  =   params if params && !params.empty?
@@ -92,6 +93,8 @@ module Kucoin
               request.params  =   params if params && !params.empty?
             end&.body
         end
+        
+        parse(response)
       end
             
     end

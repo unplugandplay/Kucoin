@@ -17,7 +17,9 @@ module Kucoin
         datetime:         :time,
         vol:              :float,
         low:              :float,
-        change_rate:      :float
+        change_rate:      :float,
+        stick:            :boolean,
+        fav:              :boolean
       }
     end
   end

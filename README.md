@@ -42,6 +42,9 @@ client = Kucoin::Rest::Client.new
 client.ticker("HPB-ETH")
 ```
 
+## Status
+
+Full rspec coverage suit will be added shortly. Almost all API endpoints have been implemented. Feel free to fork the repo and submit PRs for any missing endpoints!
 
 ## Development
 

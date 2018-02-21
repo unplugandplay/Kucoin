@@ -1,0 +1,56 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.kucoin.com/v1/ITC-ETH/cancel-order
+    body:
+      encoding: UTF-8
+      string: orderOid=5a8dea55003f9b447c298a28&type=BUY
+    headers:
+      User-Agent:
+      - Kucoin Ruby
+      Accept-Language:
+      - en_EN
+      Kc-Api-Key:
+      - API-KEY
+      Kc-Api-Nonce:
+      - '1519250107523'
+      Kc-Api-Signature:
+      - MASKED_API_SIGNATURE
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Date:
+      - Wed, 21 Feb 2018 21:55:09 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - https://www.kucoin.com
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept, Accept-Language
+      Access-Control-Allow-Methods:
+      - POST, GET, PUT, OPTIONS, DELETE, PATCH
+      Access-Control-Max-Age:
+      - '86400'
+      Kc-Node:
+      - localhost
+    body:
+      encoding: UTF-8
+      string: '{"success":true,"code":"OK","msg":"Operation succeeded.","timestamp":1519250109856,"data":null}'
+    http_version: 
+  recorded_at: Wed, 21 Feb 2018 21:55:10 GMT
+recorded_with: VCR 4.0.0

@@ -17,7 +17,7 @@ module Kucoin
         
         private
           def get_orders(symbol:, endpoint:, params: {}, type: nil, options: {})
-            response = parse(get(endpoint, params: params, options: options))&.merge("symbol" => symbol)
+            response = get(endpoint, params: params, options: options)&.merge("symbol" => symbol)
             ::Kucoin::Models::OrderBook.new(response, type: type) if response
           end
           

@@ -5,7 +5,7 @@ module Kucoin
         
         def user_info(options: {})
           options.merge!(authenticate: true)
-          response = parse(get("/user/info", options: options))&.fetch("data", {})
+          response = get("/user/info", options: options)&.fetch("data", {})
           ::Kucoin::Models::User.new(response) if response
         end
       

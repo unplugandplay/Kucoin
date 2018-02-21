@@ -4,7 +4,7 @@ module Kucoin
       module Languages
         
         def languages(options: {})
-          parse(get("/open/lang-list", options: options))&.fetch("data", [])
+          get("/open/lang-list", options: options)&.fetch("data", [])
         end
       
       end

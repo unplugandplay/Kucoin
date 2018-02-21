@@ -8,6 +8,8 @@ module Kucoin
             return case type
               when :string
                 value.to_s
+              when :symbol
+                value.to_s.underscore.downcase.to_sym
               when :integer
                 value.to_i
               when :float

@@ -1,7 +1,7 @@
 module Kucoin
   module Models
     class Trade < Base
-      ARRAY_MAPPING     =   {
+      INDEX_MAPPING     =   {
         0 => "timestamp",
         1 => "order_type",
         2 => "price",
@@ -24,7 +24,7 @@ module Kucoin
           data              =   {}
           
           item.each_with_index do |value, index|
-            data[ARRAY_MAPPING[index]] = value
+            data[INDEX_MAPPING[index]] = value
           end
           
           trades << ::Kucoin::Models::Trade.new(data)

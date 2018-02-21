@@ -22,18 +22,18 @@ module Kucoin
           
           params.delete_if { |key, value| value.nil? }
           
-          response  = parse(get("/open/kline", params: params, options: options))&.fetch("data", {})
+          response  = get("/open/kline", params: params, options: options)&.fetch("data", {})
         end
         
         #
         # TradingView related endpoints: 
         # 
         def kline_config(options: {})
-          parse(get("/open/chart/config", options: options))
+          get("/open/chart/config", options: options)
         end
         
         def chart_symbol(symbol, options: {})
-          response    =   parse(get("/open/chart/symbols", params: {symbol: symbol}, options: options))
+          response    =   get("/open/chart/symbols", params: {symbol: symbol}, options: options)
         end
         
         def chart_kline_data(symbol, resolution: :one_hour, from: nil, to: nil, options: {})
@@ -53,7 +53,7 @@ module Kucoin
           
           params.delete_if { |key, value| value.nil? }
           
-          response    =   parse(get("/open/chart/history", params: params, options: options))
+          response    =   get("/open/chart/history", params: params, options: options)
           ::Kucoin::Models::OHLCV.parse(response) if response
         end
         

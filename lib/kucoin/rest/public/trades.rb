@@ -12,7 +12,7 @@ module Kucoin
           
           params.delete_if { |key, value| value.nil? }
           
-          response  = parse(get("/open/deal-orders", params: params, options: options))&.fetch("data", {})
+          response  = get("/open/deal-orders", params: params, options: options)&.fetch("data", {})
           ::Kucoin::Models::Trade.parse(response) if response
         end
       
