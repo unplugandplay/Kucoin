@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    kucoin (0.1.0)
+    kucoin (0.1.1)
       addressable (>= 2.5.2)
       faraday (>= 0.13)
       faraday_middleware (>= 0.12.2)
