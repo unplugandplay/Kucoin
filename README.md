@@ -1,6 +1,6 @@
 # KuCoin REST Client in Ruby
 
-This gem provides a REST client to interface with [KuCoin's v2 API] (https://docs.kucoin.com).
+This gem provides a REST client to interface with [KuCoin's v2 API](https://docs.kucoin.com).
 
 The webservice client hasn't been implemented yet but will be implemented eventually (pull requests are more than welcome!)
 
