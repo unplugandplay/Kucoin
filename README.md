@@ -265,6 +265,8 @@ client.account_ledgers
 
 For more advanced options (hidden, iceberg etc. etc.) see the [orders module](lib/kucoin/rest/private/orders.rb)
 
+##### Limit orders
+
 Create a limit buy order:
 
 ```ruby
@@ -278,6 +280,22 @@ Create a limit sell order:
 client.create_sell_order("USDT-NUSD", price: 10, size: 0.24)
 => "ORDER_ID_OF_NEWLY_CREATED_SELL_ORDER"
 ```
+
+##### Market orders
+
+```ruby
+client.create_buy_order("VET-USDT", type: :market, size: 10)
+=> "ORDER_ID_OF_NEWLY_CREATED_BUY_ORDER"
+```
+
+Create a limit sell order:
+
+```ruby
+client.create_sell_order("USDT-NUSD", type: :market, size: 0.01)
+=> "ORDER_ID_OF_NEWLY_CREATED_SELL_ORDER"
+```
+
+##### Cancel orders
 
 Cancel a specific order:
 

@@ -1,0 +1,67 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.kucoin.com/api/v1/orders
+    body:
+      encoding: UTF-8
+      string: '{"clientOid":"d68e39e2-123e-4baf-be50-8b3f965945ed","side":"sell","symbol":"USDT-NUSD","type":"market","size":"0.01"}'
+    headers:
+      User-Agent:
+      - Kucoin Ruby
+      Kc-Api-Key:
+      - API-KEY
+      Kc-Api-Sign:
+      - XuOsLWK8ltbUJXN9ImD3YUQs/kb+6fgNOEcIqvRws70=
+      Kc-Api-Timestamp:
+      - '1558463055884'
+      Kc-Api-Passphrase:
+      - API-PASSPHRASE
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Date:
+      - Tue, 21 May 2019 18:24:16 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - AWSALB=uXZF/pe24n882eis8LOSxRBa/XQvakckgWFCSa8dMu11iHqPq22XVTAf22ARJ0OvxBj+Ocq3Vw4UcQ4w9jDHYMMB5du/ynI4EmZIrXzjlrIKjdFhCBprkuCS4V7i;
+        Expires=Tue, 28 May 2019 18:24:16 GMT; Path=/
+      - SESSION=OGI0NGIyNDItNjY0Mi00MTMzLTlhMGQtMDMzOTRhZTBlMjdk; Max-Age=604800;
+        Expires=Tue, 28-May-2019 18:24:16 GMT; Domain=kucoin.com; Path=/; Secure;
+        HttpOnly
+      - X-TRACE=6M9JZbDj6lJDB1VfKe8JHdKeidyZEZMwtP40DAUMqGQ=; Path=/
+      Server:
+      - nginx
+      X-Trace-Id:
+      - 51c27ff66de95e68
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Expires:
+      - '0'
+      X-Frame-Options:
+      - DENY
+      Strict-Transport-Security:
+      - max-age=9800; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"code":"200000","data":{"orderId":"5ce44250cdaba44800fcecf5"}}'
+    http_version: 
+  recorded_at: Tue, 21 May 2019 18:24:16 GMT
+recorded_with: VCR 4.0.0
