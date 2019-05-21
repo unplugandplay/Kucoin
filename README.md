@@ -220,6 +220,85 @@ client.market_stats("XRP-USDT")
  @vol_value=231722.93958312072>
 ```
 
+### Private/Authenticated API
+
+#### Accounts
+
+List all accounts:
+
+```ruby
+client.accounts
+=> [#<Kucoin::Models::Account:0x00007fb6202ae328 @available=0.0, @balance=0.0, @currency="ETH", @holds=0.0, @id="ETH_MAIN_ACCOUNT_ID", @type="main">,
+ #<Kucoin::Models::Account:0x00007fb6202ad1f8 @available=0.0, @balance=0.0, @currency="USDT", @holds=0.0, @id="USDT_TRADE_ACCOUNT_ID", @type="trade">, ... ]
+```
+
+Fetch a specific account:
+
+```ruby
+client.account("ACCOUNT_ID")
+=> #<Kucoin::Models::Account:0x00007fb6202ecb28 @available=0.0, @balance=0.0, @currency="ETH", @holds=0.0>
+```
+
+Create a new main account for ETH:
+
+```ruby
+client.create_account(type: :main, currency: "ETH")
+=> "ID_OF_NEWLY_CREATED_MAIN_ETH_ACCOUNT"
+```
+
+Create a new trading account for ETH:
+
+```ruby
+client.create_account(type: :trade, currency: "ETH")
+=> "ID_OF_NEWLY_CREATED_TRADING_ETH_ACCOUNT"
+```
+
+List the ledger for a specific account:
+
+```ruby
+client.account_ledgers
+=> [#<Kucoin::Models::Ledger:0x00007fb6202dc520 @amount=0.0, @balance=0.0, @biz_type="Transfer", @context=nil, @created_at=2019-02-19 00:55:38 UTC, @currency="ETH", @direction=:in, @fee=0.0>,
+ #<Kucoin::Models::Ledger:0x00007fb6202e6a70 @amount=0.0, @balance=0.0, @biz_type="Withdrawal", @context=nil, @created_at=2019-02-19 01:23:10 UTC, @currency="ETH", @direction=:out, @fee=0.0>, ... ]
+```
+
+#### Orders
+
+For more advanced options (hidden, iceberg etc. etc.) see the [orders module](lib/kucoin/rest/private/orders.rb)
+
+Create a limit buy order:
+
+```ruby
+client.create_buy_order("XRP-USDT", price: 0.10, size: 0.8)
+=> "ORDER_ID_OF_NEWLY_CREATED_BUY_ORDER"
+```
+
+Create a limit sell order:
+
+```ruby
+client.create_sell_order("USDT-NUSD", price: 10, size: 0.24)
+=> "ORDER_ID_OF_NEWLY_CREATED_SELL_ORDER"
+```
+
+Cancel a specific order:
+
+```ruby
+client.cancel_order("ORDER_ID_TO_CANCEL")
+=> ["ID_OF_NEWLY_CANCELLED_ORDER"]
+```
+
+Cancel all orders for all pairs/symbols:
+
+```ruby
+client.cancel_all_orders.first
+=> ["ID_OF_NEWLY_CANCELLED_ORDER", "ID_OF_ANOTHER_CANCELLED_ORDER"]
+```
+
+Cancel all orders for a specific symbol:
+
+```ruby
+client.cancel_all_orders("XRP-USDT").first
+=> ["ID_OF_NEWLY_CANCELLED_ORDER", "ID_OF_ANOTHER_CANCELLED_ORDER"]
+```
 
 ## Status
 
