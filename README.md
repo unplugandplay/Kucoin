@@ -256,7 +256,7 @@ client.create_account(type: :trade, currency: "ETH")
 List the ledger for a specific account:
 
 ```ruby
-client.account_ledgers
+client.account_ledger("ACCOUNT_ID")
 => [#<Kucoin::Models::Ledger:0x00007fb6202dc520 @amount=0.0, @balance=0.0, @biz_type="Transfer", @context=nil, @created_at=2019-02-19 00:55:38 UTC, @currency="ETH", @direction=:in, @fee=0.0>,
  #<Kucoin::Models::Ledger:0x00007fb6202e6a70 @amount=0.0, @balance=0.0, @biz_type="Withdrawal", @context=nil, @created_at=2019-02-19 01:23:10 UTC, @currency="ETH", @direction=:out, @fee=0.0>, ... ]
 ```

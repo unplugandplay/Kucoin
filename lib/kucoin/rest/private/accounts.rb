@@ -31,7 +31,7 @@ module Kucoin
           post("/accounts", data: payload, options: options)&.dig("data", "id")
         end
         
-        def account_ledgers(account_id, start_at: nil, end_at: nil, options: {})
+        def account_ledger(account_id, start_at: nil, end_at: nil, options: {})
           options.merge!(authenticate: true)
           
           params              =   {}
