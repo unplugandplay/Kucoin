@@ -28,6 +28,8 @@ Or install it yourself as:
 
 ## Setup
 
+Create e.g. an initializer and configure the client globally:
+
 ```ruby
 Kucoin.configure do |config|
   config.key          =   YOUR_API_KEY
