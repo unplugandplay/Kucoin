@@ -136,8 +136,8 @@ module Kucoin
             payload[:visibleSize]   =   iceberg_visible_size.to_s unless iceberg_visible_size.to_s.empty?
             
           elsif payload[:type] == "market"
-            raise ::Kucoin::Errors::ArgumentError.new("You need to either specify a size of the base currency or the quote currency") if size.to_s.empty? && funds.to_s.empty?
-            raise ::Kucoin::Errors::ArgumentError.new("You can can't create orders with both size and funds specified, please choose one of the two.") if !size.to_s.empty? && !funds.to_s.empty?
+            raise ::Kucoin::Errors::ArgumentError.new("You need to either specify a size of the base currency or the quote currency!") if size.to_s.empty? && funds.to_s.empty?
+            raise ::Kucoin::Errors::ArgumentError.new("You can can't create orders with both size and funds specified, please choose one of the two!") if !size.to_s.empty? && !funds.to_s.empty?
             
             payload[:size]          =   size.to_s unless size.to_s.empty?
             payload[:funds]         =   funds.to_s unless funds.to_s.empty?
