@@ -121,7 +121,7 @@ module Kucoin
           
           payload[:stp]             =   self_trade_prevention unless self_trade_prevention.to_s.empty?
           
-          if payload[:type] == "limit"
+          if type.to_sym.eql?(:limit)
             raise ::Kucoin::Errors::ArgumentError.new("You need to specify a price for limit orders!") if price.to_s.empty?
             raise ::Kucoin::Errors::ArgumentError.new("You need to specify a quantity/size for limit orders!") if size.to_s.empty?
             
@@ -135,7 +135,7 @@ module Kucoin
             payload[:iceberg]       =   iceberg unless iceberg.nil?
             payload[:visibleSize]   =   iceberg_visible_size.to_s unless iceberg_visible_size.to_s.empty?
             
-          elsif payload[:type] == "market"
+          elsif type.to_sym.eql?(:market)
             raise ::Kucoin::Errors::ArgumentError.new("You need to either specify a size of the base currency or the quote currency!") if size.to_s.empty? && funds.to_s.empty?
             raise ::Kucoin::Errors::ArgumentError.new("You can can't create orders with both size and funds specified, please choose one of the two!") if !size.to_s.empty? && !funds.to_s.empty?
             
