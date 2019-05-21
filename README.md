@@ -283,12 +283,14 @@ client.create_sell_order("USDT-NUSD", price: 10, size: 0.24)
 
 ##### Market orders
 
+Create a market buy order:
+
 ```ruby
 client.create_buy_order("VET-USDT", type: :market, size: 10)
 => "ORDER_ID_OF_NEWLY_CREATED_BUY_ORDER"
 ```
 
-Create a limit sell order:
+Create a market sell order:
 
 ```ruby
 client.create_sell_order("USDT-NUSD", type: :market, size: 0.01)
