@@ -289,14 +289,14 @@ client.cancel_order("ORDER_ID_TO_CANCEL")
 Cancel all orders for all pairs/symbols:
 
 ```ruby
-client.cancel_all_orders.first
+client.cancel_all_orders
 => ["ID_OF_NEWLY_CANCELLED_ORDER", "ID_OF_ANOTHER_CANCELLED_ORDER"]
 ```
 
 Cancel all orders for a specific symbol:
 
 ```ruby
-client.cancel_all_orders("XRP-USDT").first
+client.cancel_all_orders("XRP-USDT")
 => ["ID_OF_NEWLY_CANCELLED_ORDER", "ID_OF_ANOTHER_CANCELLED_ORDER"]
 ```
 
