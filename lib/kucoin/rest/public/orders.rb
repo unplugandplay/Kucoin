@@ -3,35 +3,23 @@ module Kucoin
     module Public
       module Orders
         
-        def orders(symbol, limit: 100, group: nil, options: {})
-          get_orders(symbol: symbol, endpoint: "/open/orders", params: order_params(symbol, group, limit), type: nil, options: options)
+        def partial_order_book(symbol, depth: 20, options: {})
+          order_book(symbol, level: 2, depth: depth, options: options)
         end
         
-        def buy_orders(symbol, limit: 100, group: nil, options: {})
-          get_orders(symbol: symbol, endpoint: "/open/orders-buy", params: order_params(symbol, group, limit), type: "BUY", options: options)
+        def full_aggregated_order_book(symbol, options: {})
+          order_book(symbol, level: 2, depth: nil, options: options)
         end
         
-        def sell_orders(symbol, limit: 100, group: nil, options: {})
-          get_orders(symbol: symbol, endpoint: "/open/orders-sell", params: order_params(symbol, group, limit), type: "SELL", options: options)
+        def full_atomic_order_book(symbol, options: {})
+          order_book(symbol, level: 3, depth: nil, options: options)
         end
         
-        private
-          def get_orders(symbol:, endpoint:, params: {}, type: nil, options: {})
-            response = get(endpoint, params: params, options: options)&.merge("symbol" => symbol)
-            ::Kucoin::Models::OrderBook.new(response, type: type) if response
-          end
-          
-          def order_params(symbol, group = nil, limit = nil)
-            params          =   {
-              symbol: symbol,
-              group:  group,
-              limit:  limit
-            }
-            
-            params.delete_if { |key, value| value.nil? }
-          
-            return params
-          end
+        def order_book(symbol, level: 2, depth: nil, options: {})
+          params      =   {symbol: symbol.to_s.upcase}
+          path        =   depth.nil? ? "/market/orderbook/level#{level}" : "/market/orderbook/level#{level}_#{depth}"
+          response    =   get(path, params: params, options: options)&.fetch("data", {})
+        end
       
       end
     end

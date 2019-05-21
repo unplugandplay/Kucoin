@@ -3,21 +3,20 @@ module Kucoin
     module Private
       module Transfers
         
-        def get_coin_address(coin, options: {})
-          options.merge!(authenticate: true)
-          response = get("/account/#{coin}/wallet/address", options: options)&.fetch("data", {})
-          ::Kucoin::Models::CoinAddress.new(response) if response
-        end
+        # Transfer functions haven't been implemented yet - feel free to work and send pull requests.
         
-        def create_withdrawal(coin, amount:, address:, options: {})
-          options.merge!(authenticate: true)
-          post("/account/#{coin}/withdraw/apply", data: {coin: coin, amount: amount, address: address}, options: options)
-        end
-        
-        def cancel_withdrawal(coin, transaction_id:, options: {})
-          options.merge!(authenticate: true)
-          post("/account/#{coin}/withdraw/cancel", data: {txOid: transaction_id}, options: options)
-        end
+        #TODO:
+        # - https://docs.kucoin.com/#transfer-between-master-account-and-sub-account
+        # - https://docs.kucoin.com/#inner-transfer
+        # - https://docs.kucoin.com/#create-deposit-address
+        # - https://docs.kucoin.com/#get-deposit-address
+        # - https://docs.kucoin.com/#get-deposit-list
+        # - https://docs.kucoin.com/#get-v1-historical-deposits-list
+        # - https://docs.kucoin.com/#get-withdrawals-list
+        # - https://docs.kucoin.com/#get-v1-historical-withdrawals-list
+        # - https://docs.kucoin.com/#get-withdrawal-quotas
+        # - https://docs.kucoin.com/#apply-withdraw
+        # - https://docs.kucoin.com/#cancel-withdrawal
       
       end
     end

@@ -1,37 +1,13 @@
 module Kucoin
   module Models
     class Trade < Base
-      INDEX_MAPPING     =   {
-        0 => "timestamp",
-        1 => "order_type",
-        2 => "price",
-        3 => "amount",
-        4 => "volume"
-      }
-      
       MAPPING           =   {
-        timestamp:  :time,
-        order_type: :string,
-        price:      :float,
-        amount:     :float,
-        volume:     :float,
+        sequence: :string,
+        side:     :symbol,
+        size:     :float,
+        price:    :float,
+        time:     :time
       }
-      
-      def self.parse(response)
-        trades              =   []
-        
-        response&.each do |item|
-          data              =   {}
-          
-          item.each_with_index do |value, index|
-            data[INDEX_MAPPING[index]] = value
-          end
-          
-          trades << ::Kucoin::Models::Trade.new(data)
-        end
-        
-        return trades
-      end
 
     end
   end

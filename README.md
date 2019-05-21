@@ -1,12 +1,14 @@
 # KuCoin REST Client in Ruby
 
-This gem provides a REST client to interface with KuCoin's API. As of right now a Websocket service isn't provided by KuCoin and as such, all API calls are made over REST.
+This gem provides a REST client to interface with [KuCoin's v2 API] (https://docs.kucoin.com).
+
+The webservice client hasn't been implemented yet but will be implemented eventually (pull requests are more than welcome!)
 
 ## Getting started
 
 First of all you'll need to get an account on KuCoin, [click here to get one](https://www.kucoin.com).
 
-After setting up your account, head to "Account", locate the "API Keys" section and click on "Create".
+After setting up your account, head to "Account", locate the "API Management" section and click on "Create API".
 
 ## Installation
 
@@ -28,8 +30,9 @@ Or install it yourself as:
 
 ```ruby
 Kucoin.configure do |config|
-  config.key = YOUR_API_KEY
-  config.secret = YOUR_API_SECRET
+  config.key          =   YOUR_API_KEY
+  config.secret       =   YOUR_API_SECRET
+  config.passphrase   =   PASSPHRASE_YOU_USED_TO_CREATE_THE_API_KEY
 end
 ```
 
@@ -39,12 +42,14 @@ REST Client (see specs/source code for available methods/endpoints):
 
 ```ruby
 client = Kucoin::Rest::Client.new
-client.ticker("HPB-ETH")
+client.ticker("XRP-USDT")
 ```
 
 ## Status
 
-Full rspec coverage suit will be added shortly. Almost all API endpoints have been implemented. Feel free to fork the repo and submit PRs for any missing endpoints!
+The REST API hasn't been fully implemented yet, but nearly all endpoints are there. Transfer endpoints are still on the todo list.
+Better spec coverage also needs to be implemented.
+The model parsing/management will also be moved to Virtus eventually.
 
 ## Development
 

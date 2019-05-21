@@ -12,6 +12,7 @@ if ::File.exists?(cfg_path)
   Kucoin.configure do |config|
     config.key        =   cfg["key"]
     config.secret     =   cfg["secret"]
+    config.passphrase =   cfg["passphrase"]
   
     config.faraday    =   {
       user_agent: "Kucoin Ruby",
@@ -24,8 +25,9 @@ end
 # with your gem easier. You can also use a different console, if you like.
 
 # (If you use this, don't forget to add pry to your Gemfile!)
-# require "pry"
-# Pry.start
+require "pry"
+Pry.config.history.file = File.join(__FILE__, "../.pry_history")
+Pry.start
 
-require "irb"
-IRB.start(__FILE__)
+#require "irb"
+#IRB.start(__FILE__)
