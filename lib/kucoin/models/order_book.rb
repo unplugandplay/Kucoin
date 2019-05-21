@@ -20,8 +20,6 @@ module Kucoin
       end
       
       def process(data, type: nil)
-        pp data
-        
         if data.is_a?(Hash)
           ["BUY", "SELL"].each do |type|
             process_orders(data.fetch(type.to_s, []), type: type)
