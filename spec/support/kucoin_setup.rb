@@ -19,6 +19,7 @@ def setup_kucoin(type = :full)
     Kucoin.configure do |config|
       config.key        =   cfg["key"]
       config.secret     =   cfg["secret"]
+      config.passphrase =   cfg["passphrase"]
   
       config.faraday    =   {
         user_agent: "Kucoin Ruby",

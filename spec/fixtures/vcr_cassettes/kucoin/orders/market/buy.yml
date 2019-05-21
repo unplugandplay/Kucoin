@@ -1,22 +1,24 @@
 ---
 http_interactions:
 - request:
-    method: delete
-    uri: https://api.kucoin.com/api/v1/orders?symbol=XRP-USDT
+    method: post
+    uri: https://api.kucoin.com/api/v1/orders
     body:
-      encoding: US-ASCII
-      string: ''
+      encoding: UTF-8
+      string: '{"clientOid":"d3990b03-201e-45b1-95dd-58ffd6841844","side":"buy","symbol":"VET-USDT","type":"market","size":"10"}'
     headers:
       User-Agent:
       - Kucoin Ruby
       Kc-Api-Key:
       - API-KEY
       Kc-Api-Sign:
-      - ZB1KNNSecV4vHFTNChX/u4P/uj40F8+QD4wmCIYPg7A=
+      - vKWzLS0ZBTcVuzMXrD6D+ILfvGvQYUtKc7JebNmc+DE=
       Kc-Api-Timestamp:
-      - '1558458638725'
+      - '1558464518321'
       Kc-Api-Passphrase:
       - API-PASSPHRASE
+      Content-Type:
+      - application/json
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -27,7 +29,7 @@ http_interactions:
       message: ''
     headers:
       Date:
-      - Tue, 21 May 2019 17:10:39 GMT
+      - Tue, 21 May 2019 18:48:38 GMT
       Content-Type:
       - application/json;charset=UTF-8
       Transfer-Encoding:
@@ -35,16 +37,16 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - AWSALB=VGr03gmuydp1WjGtvd5LwxI5ahcrkkZ8vGgdAWLrfKvMLIQ2wmCVVEXTDT6iVcyQlASG5LXLB5gjV/LR69tlx707v8HHnmm7ei1nWSXV69QScwAsNX2zq6SYM0p4;
-        Expires=Tue, 28 May 2019 17:10:39 GMT; Path=/
-      - SESSION=YTJiNGY4ZGYtYTk2Mi00ODhmLWI4MzYtMTdjNTYwMmZkMDYw; Max-Age=604800;
-        Expires=Tue, 28-May-2019 17:10:39 GMT; Domain=kucoin.com; Path=/; Secure;
+      - AWSALB=TaI0zgIC+yQHe0Rzo484M4OQpZDK8YuLQ44NVQUov0A7rK+732DOzdDnKcl352Mur8SSbjGvTlXL17SyVG66yFbJODg5RqHufYT8LpAbsutSemZhwKZ0nJCHqcmq;
+        Expires=Tue, 28 May 2019 18:48:38 GMT; Path=/
+      - SESSION=Yjc0NDE2YjgtMWNlOC00ZWY2LTliOGYtOTExNTk0NjEwMWM1; Max-Age=604800;
+        Expires=Tue, 28-May-2019 18:48:38 GMT; Domain=kucoin.com; Path=/; Secure;
         HttpOnly
       - X-TRACE=6M9JZbDj6lJDB1VfKe8JHdKeidyZEZMwtP40DAUMqGQ=; Path=/
       Server:
       - nginx
       X-Trace-Id:
-      - 76bfb526e389ef73
+      - 3fb22cd0fb23d554
       X-Content-Type-Options:
       - nosniff
       X-Xss-Protection:
@@ -58,16 +60,16 @@ http_interactions:
       Weight-Interval:
       - SECOND
       Weight-Expire:
-      - '1558458625'
+      - '1558464510'
       Weight-Limit:
       - '1800'
       Weight-Remain:
-      - '1798'
+      - '1797'
       Strict-Transport-Security:
       - max-age=9800; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"code":"200000","data":{"cancelledOrderIds":["5ce430dfcdaba44800f96a69"]}}'
+      string: '{"code":"200000","data":{"orderId":"5ce44806c788c65667046597"}}'
     http_version: 
-  recorded_at: Tue, 21 May 2019 17:10:39 GMT
+  recorded_at: Tue, 21 May 2019 18:48:38 GMT
 recorded_with: VCR 4.0.0

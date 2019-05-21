@@ -2,15 +2,13 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.kucoin.com/v1/open/tick?symbol=HPB-ETH
+    uri: https://api.kucoin.com/api/v1/market/orderbook/level1?symbol=XRP-USDT
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
       - KuCoin Ruby
-      Accept-Language:
-      - en_EN
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -21,28 +19,35 @@ http_interactions:
       message: ''
     headers:
       Date:
-      - Tue, 20 Feb 2018 19:02:28 GMT
+      - Tue, 21 May 2019 17:06:41 GMT
       Content-Type:
       - application/json;charset=UTF-8
       Transfer-Encoding:
       - chunked
       Connection:
       - keep-alive
-      Access-Control-Allow-Origin:
-      - https://www.kucoin.com
-      Access-Control-Allow-Credentials:
-      - 'true'
-      Access-Control-Allow-Headers:
-      - Origin, X-Requested-With, Content-Type, Accept, Accept-Language
-      Access-Control-Allow-Methods:
-      - POST, GET, PUT, OPTIONS, DELETE, PATCH
-      Access-Control-Max-Age:
-      - '86400'
-      Kc-Node:
-      - localhost
+      Set-Cookie:
+      - AWSALB=0proG1InLHW5++MKTbl2A3gotmrYQPxf/eRlrcGOE1+FkPJB2CaYY5pj9gEiRTwtWSFfYHVRijqbfOQ+pbTMBAtAw8gb5tr2TejF5q9WTGXKwI6P9ACqDkJls+EF;
+        Expires=Tue, 28 May 2019 17:06:41 GMT; Path=/
+      Server:
+      - nginx
+      X-Trace-Id:
+      - 17b7b07a802fef17
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Expires:
+      - '0'
+      X-Frame-Options:
+      - DENY
+      Strict-Transport-Security:
+      - max-age=9800; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"success":true,"code":"OK","msg":"Operation succeeded.","timestamp":1519153348457,"data":{"coinType":"HPB","trading":true,"symbol":"HPB-ETH","lastDealPrice":0.005491,"buy":0.005491,"sell":0.005568,"change":-9.6E-4,"coinTypePair":"ETH","sort":0,"feeRate":0.001,"volValue":366.86616079,"high":0.006579,"datetime":1519153348000,"vol":61104.1427,"low":0.005491,"changeRate":-0.1488}}'
+      string: '{"code":"200000","data":{"sequence":"1556266889824","bestAsk":"0.39627","size":"169.7","price":"0.39541","bestBidSize":"525.29","time":1558458401604,"bestBid":"0.39612","bestAskSize":"2459.5806"}}'
     http_version: 
-  recorded_at: Tue, 20 Feb 2018 19:02:28 GMT
+  recorded_at: Tue, 21 May 2019 17:06:41 GMT
 recorded_with: VCR 4.0.0

@@ -1,6 +1,6 @@
 module Kucoin
   class Configuration
-    attr_accessor :api_url, :api_version, :key, :secret, :faraday
+    attr_accessor :api_url, :api_version, :key, :secret, :passphrase, :faraday
     
     def initialize
       self.api_url          =   "https://api.kucoin.com"
@@ -8,6 +8,7 @@ module Kucoin
       
       self.key              =   nil
       self.secret           =   nil
+      self.passphrase       =   nil
       
       self.faraday          =   {
         adapter:    :net_http,

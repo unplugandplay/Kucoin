@@ -24,6 +24,8 @@ module Kucoin
                 epoch_to_time(value, ms: use_ms_for_time)
               when :hash
                 value.symbolize_keys
+              when :json
+                JSON.parse(value) unless value.to_s.empty?
               else
                 value
             end

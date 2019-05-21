@@ -5,27 +5,23 @@ module Kucoin
       
       def initialize(configuration: ::Kucoin.configuration)
         self.configuration    =   configuration
-        self.url              =   "#{self.configuration.api_url}/v#{self.configuration.api_version}"
+        self.url              =   "#{self.configuration.api_url}/api/v#{self.configuration.api_version}"
       end
       
       include ::Kucoin::Rest::Errors
       include ::Kucoin::Rest::Authentication
       
       include ::Kucoin::Rest::Public::Currencies
-      include ::Kucoin::Rest::Public::Languages
-      include ::Kucoin::Rest::Public::Ticker
       include ::Kucoin::Rest::Public::Orders
       include ::Kucoin::Rest::Public::Trades
       include ::Kucoin::Rest::Public::Markets
+      include ::Kucoin::Rest::Public::Tickers
       include ::Kucoin::Rest::Public::Klines
       
-      include ::Kucoin::Rest::Private::User
-      include ::Kucoin::Rest::Private::Languages
-      include ::Kucoin::Rest::Private::Invitations
       include ::Kucoin::Rest::Private::Transfers
-      include ::Kucoin::Rest::Private::Balances
-      include ::Kucoin::Rest::Private::Trading
-      include ::Kucoin::Rest::Private::Markets
+      include ::Kucoin::Rest::Private::Accounts
+      include ::Kucoin::Rest::Private::Orders
+      include ::Kucoin::Rest::Private::Fills
             
       def configured?
         !self.configuration.key.to_s.empty? && !self.configuration.secret.to_s.empty?
@@ -42,7 +38,7 @@ module Kucoin
       end
       
       def signature_path(path)
-        "/v#{self.configuration.api_version}#{path}"
+        "/api/v#{self.configuration.api_version}#{path}"
       end
       
       def parse(response)
@@ -57,6 +53,10 @@ module Kucoin
       def post(path, params: {}, data: {}, options: {})
         request path, method: :post, params: params, data: data, options: options
       end
+      
+      def delete(path, params: {}, data: {}, options: {})
+        request path, method: :delete, params: params, data: data, options: options
+      end
 
       def request(path, method: :get, params: {}, data: {}, options: {})
         should_auth   =   options.fetch(:authenticate, false)
@@ -65,13 +65,12 @@ module Kucoin
     
         connection    =   Faraday.new(url: to_uri(path)) do |builder|
           builder.headers["User-Agent"]       =   user_agent if !user_agent.to_s.empty?
-          builder.headers["Accept-Language"]  =   "en_EN"
           
-          builder.headers.merge!(authenticate!(path, params)) if should_auth && method.eql?(:get)
-          builder.headers.merge!(authenticate!(path, data))   if should_auth && method.eql?(:post)
+          builder.headers.merge!(authenticate!(method, path, params: params))             if should_auth && method.eql?(:get)
+          builder.headers.merge!(authenticate!(method, path, params: params, data: data)) if should_auth && ::Kucoin::Constants::HTTP_DATA_VERBS.include?(method)
           
-          builder.request  :url_encoded if method.eql?(:post)
-          builder.response :logger      if self.configuration.verbose_faraday?
+          builder.request  :json   if ::Kucoin::Constants::HTTP_DATA_VERBS.include?(method)
+          builder.response :logger if self.configuration.verbose_faraday?
           builder.response :json
       
           if proxy
@@ -85,12 +84,12 @@ module Kucoin
         response = case method
           when :get
             connection.get do |request|
-              request.params  =   params if params && !params.empty?
+              request.params      =   params if params && !params.empty?
             end&.body
-          when :post
-            connection.post do |request|
-              request.body    =   data
-              request.params  =   params if params && !params.empty?
+          when *::Kucoin::Constants::HTTP_DATA_VERBS
+            connection.send(method) do |request|
+              request.body        =   data   if data && !data.empty?
+              request.params      =   params if params && !params.empty?
             end&.body
         end
         

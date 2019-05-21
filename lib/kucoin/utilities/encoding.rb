@@ -4,8 +4,8 @@ module Kucoin
       
       class << self
         
-        def sign(string, secret: ::Kucoin.configuration.secret)
-          ::OpenSSL::HMAC.hexdigest(::OpenSSL::Digest.new('sha256'), secret, ::Base64.strict_encode64(string))
+        def sign(message, secret: ::Kucoin.configuration.secret)
+          ::Base64.encode64(OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha256'), secret, message)).strip
         end
                   
       end
