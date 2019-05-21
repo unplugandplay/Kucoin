@@ -3,7 +3,7 @@ module Kucoin
     module Private
       module Transfers
         
-        # Transfer functions haven't been implemented yet - feel free to work and send pull requests.
+        # Transfer functions haven't been implemented yet - feel free to implement these and send pull requests.
         
         #TODO:
         # - https://docs.kucoin.com/#transfer-between-master-account-and-sub-account
